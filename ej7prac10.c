@@ -11,35 +11,50 @@ typedef struct nodo {
     struct nodo * back;
 } TNodo;
 
-TNodo *p, *r, *s, *t;
+TNodo *q, *p, *r, *s, *t;
 
 void MostrarLista(TNodo * list);
 
 int main () {
 
     p = (TNodo * ) malloc (sizeof(TNodo));          //ultimo nodo por p
-    strcpy(p -> info, "estas?");
+    strcpy(p -> info, "va?");
     p -> next = NULL;
     p -> back = NULL;
 
     t = (TNodo * ) malloc (sizeof(TNodo));    
     p -> back = t;
-    strcpy(t -> info, "como");
+    strcpy(t -> info, "te");
     t -> next = p;
 
     s = (TNodo * ) malloc (sizeof(TNodo));
     t -> back = t;    
-    strcpy(s -> info, "Tito,");
+    strcpy(s -> info, "cómo");
     s -> next = t;
 
     r = (TNodo * ) malloc (sizeof(TNodo));          //primer nodo por r
     s -> back = s;
-    strcpy(r -> info, "Hola");
+    strcpy(r -> info, "Hola,");
     r -> next = s;
     r -> back = NULL;
 
     MostrarLista(r);
 
+    q = (TNodo * ) malloc (sizeof(TNodo));
+    strcpy(q -> info, "Tito,");
+    q-> next = s;                                 //coloco q
+    q-> back = r;
+    r-> next = q;                                     
+    t-> back = q;
+    
+    free (p);                   //
+    p = t;                      //elimino "va?"
+    t-> next = NULL;            //
+    
+    strcpy(t -> info, "estás?");
+    
+    MostrarLista(r);
+    
     return 0;
 }
 
@@ -52,8 +67,5 @@ void MostrarLista (TNodo * list) {
         printf("%s ",aux -> info);
         aux = aux -> next;
     }
+    printf("\n");
 };
-
-//void MostrarLista (TNodo * list) {
-
-//};
