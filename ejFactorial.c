@@ -1,7 +1,7 @@
 //Octavio Gentile 44898506 c3
 //FactorialEnAumentoEnCola
 #include <stdio.h>
-#include <string.h>
+
 
 int num, resultado;
 char msj[100];
