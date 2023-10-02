@@ -2,12 +2,11 @@
 //FactorialEnAumentoEnCola
 #include <stdio.h>
 
-
 int num, resultado;
 char msj[100];
 
 int factorialAumento(int n);
-void FactorialCola(int n, *res);
+void FactorialCola(int n, int res);
 void menu();
 
 int main(){
@@ -23,7 +22,7 @@ int factorialAumento(int n){
     }
 }
 
-void FactorialCola(int n, *res){
+void FactorialCola(int n, int res){
     if(n==0){
         res = 1;
     }else{
@@ -41,12 +40,12 @@ void menu(){
     scanf("%d", &num);
     while(num>=0){
         resultado = 1;
-        printf("Factorial con aumento:\n");
-        printf("%d", factorialAumento(num));
+        printf("Factorial con aumento: ");
+        printf("%d \n", factorialAumento(num));
         FactorialCola(num, resultado);
         printf("Factorial con cola: ");
-        printf("%d", resultado);
-        printf("Otro Factorial: \n");
-        scanf("%d", &num);
+        printf("%d \n", resultado);
+        printf("Otro Factorial: ");
+        scanf("%d \n", &num);
     }
 }
