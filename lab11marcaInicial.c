@@ -46,5 +46,5 @@ void CargarArchivo(FILE *g){
         getchar();
         fputc(elem, g);
     }
-    feof(g);
+    fclose(g);
 }
