@@ -2,7 +2,6 @@
 
 #include <stdio.h>
 #include <string.h>
-#include <stdlib.h>
 
 FILE *f;
 char elementoActual, elementoDado;
@@ -10,15 +9,17 @@ int i, iguales, distintos;
 
 void CargarArchivo(FILE *(*g));
 
-int main(){
+void main(){
     CargarArchivo(&f);
-    f=open("secu.txt","r");
+    f = fopen("secu.txt","r");
+    printf("Ingrese el Caracter a buscar cuantos iguales y distintos hay: \n");
+    scanf("%c", &elementoDado);
+    getchar();
     iguales = 0;
     distintos = 0;
-    printf("Ingrese el Caracter a buscar cuantos iguales y distintos hay: ");
-    scanf("%c", &elementoDado);
     while(!feof(f)){
         elementoActual = fgetc(f);
+       // printf("elemActual %c \n", elementoActual);
         if(elementoActual == elementoDado){
             iguales = iguales + 1;
         }else{
@@ -26,23 +27,25 @@ int main(){
         }
     }
     fclose(f);
-    printf("Cantidad de elementos iguales: ");
+    printf("\nCantidad de elementos iguales: ");
     printf("%d", iguales);
-    printf("Cantidad de elementos distintos: ");
+    printf("\nCantidad de elementos distintos: ");
     printf("%d", distintos);
 }
 
 void CargarArchivo(FILE *(*g)){
-    char msj [50];
+    char msj [150];
     int cantidadElementos;
     char elem;
-    g = open("secu.txt", "w");
-    printf("Ingrese cuantos elementosdesea cargar en el archivo");
+    *g = fopen("secu.txt", "w");
+    printf("Ingrese cuantos elementos desea cargar en el archivo: ");
     scanf("%d", &cantidadElementos);
-    for(i = 1 ; i <= cantidadElementos; i++){
+    getchar();
+    for(i = 0 ; i < cantidadElementos; i++){
         printf("Ingrese un elemento: ");
         scanf("%c", &elem);
-        fputc(elem, g);
+        getchar();
+        fputc(elem, *g);
     }
-    feof(g);
+    feof(*g);
 }
