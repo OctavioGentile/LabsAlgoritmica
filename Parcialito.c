@@ -1,7 +1,7 @@
 //Octavio Gentile C3 Ej1-Parcialito
 
 #include <stdio.h>
-#include <string.h>
+#include <stdlib.h>
 #include <time.h>
 
 #define MAX 100
@@ -24,7 +24,7 @@ int main(){
   scanf("%d", &datos.cant);
   CrearDatos(datos);
   
-  for (i = 1; i <= datos.cant; i++){      //muestro el arreglo desordenado
+  for (i = 1; i <= datos.cant; i++){      
       printf("%d", datos.a[i]);
   }
   
@@ -33,24 +33,24 @@ int main(){
   
   Insercion(datos);
 
-  for (i = 1; i <= datos.cant; i++){         //muestro el arreglo ordenado
+  for (i = 1; i <= datos.cant; i++){     
 
       printf("%d \n", datos.a[i]);
   }
 
-  BuscarDico(datos, num, &pos);          ///////////////////////&&&&&&& 
+  BuscarDico(datos, num, &pos);          
 
   printf("La posicion del numero buscado es: (-1 sino está): ");
   printf("%d ", pos);                          
   
-  return 0;
+  return 1;
 }
 
 void CrearDatos(TData d){
   int i;
 
   for (i = 1; i <= d.cant; i++){
-    d.a[i] = rand() % (100 - 1) + 1;
+    d.a[i] = rand() % (100 - 1) + 1;              ////////////////////////////////////
   }
 }
   
@@ -75,7 +75,7 @@ void BuscarDico(TData d, int e, int *pos){
   int k, inf, sup;
   
   if (e < d.a[1] || e > d.a[d.cant]){
-    &pos = 1;
+    *pos = 1;
   }else{
     if(e > d.a[1] && e <= d.a[d.cant]){
      inf = 1;
@@ -91,10 +91,10 @@ void BuscarDico(TData d, int e, int *pos){
         }
      }
      if(d.a[inf] == e){
-        &pos = inf;
+        *pos = inf;
      }else{
        if(d.a[inf] != e){
-          &pos = -1;
+          *pos = -1;
        }
       }
     }
