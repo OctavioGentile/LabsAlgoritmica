@@ -18,6 +18,8 @@ void Insercion(TData d);
 void BuscarDico(TData d, int e, int *pos);
 
 int main(){
+  srand(time(NULL));
+  
   printf("Ingrese la cantidad de elementos a cargar: ");
   scanf("%d", &datos.cant);
   CrearDatos(datos);
@@ -79,7 +81,7 @@ void BuscarDico(TData d, int e, int *pos){
      inf = 1;
      sup = d.cant;
      while (inf < sup){
-       k = (inf + sup) div 2;
+       k = (inf + sup)/2;
         if (e > d.a[k]){
           inf = k + 1;
         }else{
@@ -91,7 +93,7 @@ void BuscarDico(TData d, int e, int *pos){
      if(d.a[inf] == e){
         &pos = inf;
      }else{
-       if(d.a[inf] <> e){
+       if(d.a[inf] != e){
           &pos = -1;
        }
       }
